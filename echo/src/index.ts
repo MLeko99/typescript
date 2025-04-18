@@ -153,17 +153,32 @@ const optionalUser: UserOptional = {
 
 */
 
-//1 
+/* //1 - Napravi generičku funkciju wrapInObject<T>(value: T) koja vraća { value: T }.
 export function wrapInObject<T>(value: T): { value: T } {
   return { value };
 }
 
-
-//2
+//2 - Napravi type Product = { id: number; title: string; price: number; description: string }.
 type Product = {
   id: number;
   title: string;
   price: number;
   description: string;
-}
+};
 
+//3 - Kreiraj sljedeće tipove koristeći utility types:
+// ProductPreview koji sadrži samo id i title, ProductUpdate gdje su sva polja opcionalna, ReadonlyProduct gdje su sva polja readonly
+
+type ProductPreview = Pick<Product, "id" | "title">;
+type ProductUpdate = Partial<Product>;
+type ReadonlyProduct = Readonly<Product>;
+
+//4 - Napravi Record<string, ProductPreview> tip za kolekciju proizvoda po ID-ju (productMap).
+
+type ProductMap = Record<string, ProductPreview>;
+
+const productMap: ProductMap = {
+  "123": { id: 123, title: "TV" },
+  "456": { id: 456, title: "Phone" },
+};
+ */
